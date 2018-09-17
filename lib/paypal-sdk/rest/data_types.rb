@@ -66,7 +66,6 @@ module PayPal::SDK
           object_of :experience_profile_id, String
           object_of :note_to_payer, String
           object_of :redirect_urls, RedirectUrls
-          object_of :failure_reason, String
           object_of :create_time, String
           object_of :update_time, String
           array_of  :links, Links
@@ -75,6 +74,7 @@ module PayPal::SDK
           object_of :potential_payer_info, PotentialPayerInfo
           object_of :credit_financing_offered, CreditFinancingOffered
           object_of :failure_reason, String
+          object_of :application_context, ApplicationContext
         end
 
         include RequestDataType
@@ -132,6 +132,18 @@ module PayPal::SDK
             PaymentHistory.new(api.get(path, options))
           end
         end
+      end
+
+      class ApplicationContext < Base
+        def self.load_members
+          object_of :brand_name, String
+          object_of :locale, String
+          object_of :landing_page, String
+          object_of :shipping_preference, String
+          object_of :user_action, String
+        end
+
+        include RequestDataType
       end
 
       class PotentialPayerInfo < Base

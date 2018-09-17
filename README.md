@@ -155,7 +155,13 @@ PayPal::SDK::REST.set_config(
     :amount =>  {
       :total =>  "5",
       :currency =>  "USD" },
-    :description =>  "This is the payment transaction description." }]})
+    :description =>  "This is the payment transaction description." }],
+     application_context: {
+         brand_name: 'Enovational',
+         landing_page: 'Billing', # or 'Login'
+         shipping_preference: 'NO_SHIPPING', # or GET_FROM_FILE or SET_PROVIDED_ADDRESS
+         user_action: 'commit' # 'commit' will show a 'Pay Now' button. 'continue' with show 'Continue' and need to be executed
+     }})
 
 if @payment.create
   @payment.id     # Payment Id
